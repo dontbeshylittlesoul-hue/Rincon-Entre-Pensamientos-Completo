@@ -1,5 +1,5 @@
 /* ================================================================
-   Rincón entre Pensamientos - lectura inmersiva completa
+   Rincón entre Pensamientos - lectura inmersiva completa V2 PNG
    ================================================================ */
 
 :root {
@@ -116,9 +116,7 @@ section, main, header {
   text-transform: lowercase;
 }
 
-.topbar nav a:hover {
-  color: var(--amber-pale);
-}
+.topbar nav a:hover { color: var(--amber-pale); }
 
 .btn-primary,
 .btn-secondary {
@@ -137,14 +135,6 @@ section, main, header {
   text-decoration: none;
   cursor: pointer;
   box-shadow: 0 8px 24px rgba(58, 28, 8, .16);
-  transition: transform .28s ease, background .28s ease, border-color .28s ease;
-}
-
-.btn-primary:hover,
-.btn-secondary:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 232, 170, .25);
-  border-color: rgba(84, 45, 18, .6);
 }
 
 .btn-secondary {
@@ -214,10 +204,7 @@ section, main, header {
   color: #211207;
 }
 
-.hero-title em {
-  font-style: italic;
-  color: #4a2a10;
-}
+.hero-title em { font-style: italic; color: #4a2a10; }
 
 .hero-subtitle {
   margin: 1.2rem auto 1.55rem;
@@ -246,9 +233,7 @@ section, main, header {
 }
 
 .intro .section-mini,
-.audio-mini {
-  color: rgba(232, 201, 154, .55);
-}
+.audio-mini { color: rgba(232, 201, 154, .55); }
 
 .intro h2 {
   font-family: var(--font-display);
@@ -306,11 +291,7 @@ section, main, header {
 
 .hidden { display: none; }
 
-.progress-wrap {
-  flex: 1;
-  cursor: pointer;
-  padding: 8px 0;
-}
+.progress-wrap { flex: 1; cursor: pointer; padding: 8px 0; }
 
 .progress-track {
   height: 2px;
@@ -322,7 +303,6 @@ section, main, header {
   height: 100%;
   width: 0%;
   background: linear-gradient(90deg, var(--amber-dim), var(--amber-pale));
-  transition: width .1s linear;
 }
 
 .volumen-slider {
@@ -333,15 +313,6 @@ section, main, header {
   background: rgba(200, 150, 90, .22);
   outline: none;
   cursor: pointer;
-}
-
-.volumen-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--amber-pale);
 }
 
 .audio-nota {
@@ -411,8 +382,7 @@ section, main, header {
 ::-webkit-scrollbar-thumb { background: rgba(200, 150, 90, .28); border-radius: 10px; }
 
 @media (max-width: 700px) {
-  html,
-  body {
+  html, body {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden !important;
@@ -424,17 +394,11 @@ section, main, header {
     padding: 0 .8rem;
   }
 
-  .brand {
-    font-size: .85rem;
-  }
+  .brand { font-size: .85rem; }
 
-  .topbar nav {
-    gap: .7rem;
-  }
+  .topbar nav { gap: .7rem; }
 
-  .topbar nav a {
-    font-size: .7rem;
-  }
+  .topbar nav a { font-size: .7rem; }
 
   .hero {
     min-height: auto;
@@ -498,9 +462,7 @@ section, main, header {
     width: 100%;
   }
 
-  .intro,
-  .audio-seccion,
-  .cierre {
+  .intro, .audio-seccion, .cierre {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -511,9 +473,7 @@ section, main, header {
     gap: 1.35rem;
   }
 
-  .pagina-libro {
-    width: min(100%, 390px);
-  }
+  .pagina-libro { width: min(100%, 390px); }
 
   .custom-player {
     width: 100%;
@@ -521,15 +481,11 @@ section, main, header {
     gap: .7rem;
   }
 
-  .volume-wrap {
-    display: none;
-  }
+  .volume-wrap { display: none; }
 }
 
 @media (max-width: 370px) {
-  .hero-pergamino {
-    min-height: 540px;
-  }
+  .hero-pergamino { min-height: 540px; }
 
   .hero-contenido {
     width: 68%;
