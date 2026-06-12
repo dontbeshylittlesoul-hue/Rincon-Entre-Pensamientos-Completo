@@ -541,3 +541,72 @@ section, main, header {
   align-self: end;
   padding-bottom: 70px;
 }
+.hero {
+  position: relative !important;
+  min-height: 100svh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 90px 12px 40px !important;
+  overflow: visible !important;
+}
+
+.hero-pergamino {
+  position: relative !important;
+  width: min(96vw, 1200px) !important;
+  max-width: 1200px !important;
+  height: auto !important;
+  min-height: 680px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  display: grid !important;
+  place-items: end center !important;
+  background-image: url("portada-wide.png") !important;
+  background-color: #1b140f !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  border-radius: 28px !important;
+  overflow: hidden !important;
+  transform: none !important;
+  filter: drop-shadow(0 28px 60px rgba(0,0,0,.68)) !important;
+  opacity: 1 !important;
+}
+
+.hero-contenido {
+  position: relative !important;
+  z-index: 5 !important;
+  padding-bottom: 70px !important;
+}
+
+.hero-solo-boton {
+  align-self: end !important;
+}
+
+.btn-primary {
+  background: rgba(20, 12, 6, 0.55) !important;
+  color: #e7c27a !important;
+  border: 1px solid rgba(231, 194, 122, 0.5) !important;
+  backdrop-filter: blur(4px);
+}
+
+@media (max-width: 700px) {
+  .hero {
+    min-height: 100svh !important;
+    padding: 80px 10px 35px !important;
+  }
+
+  .hero-pergamino {
+    width: calc(100vw - 20px) !important;
+    max-width: none !important;
+    min-height: 68svh !important;
+    background-image: url("portada-wide.png") !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    border-radius: 18px !important;
+  }
+
+  .hero-contenido {
+    padding-bottom: 45px !important;
+  }
+}
