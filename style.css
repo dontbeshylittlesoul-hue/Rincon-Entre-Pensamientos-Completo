@@ -533,3 +533,7 @@ section, main, header {
     saturate(0.70)
     sepia(0.06);
 }
+.hero-solo-boton {
+  align-self: end;
+  padding-bottom: 70px;
+}
