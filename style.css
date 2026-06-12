@@ -167,17 +167,17 @@ section, main, header {
   width: min(96vw, 1200px);
   min-height: min(82svh, 720px);
   display: grid;
-  place-items: center;
+  place-items: end center;
+  padding-bottom: 70px;
   background-image: url("portada-wide.png");
   background-color: #1b140f;
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
   border-radius: 28px;
   overflow: hidden;
   filter: drop-shadow(0 28px 60px rgba(0,0,0,.68));
 }
-
 .hero-contenido {
   width: min(70%, 460px);
   margin-left: 8%;
@@ -410,19 +410,23 @@ section, main, header {
     justify-content: flex-start;
     padding: 3.2rem 0.75rem 2.5rem;
   }
-.hero-pergamino {
-  width: calc(100vw - 24px) !important;
-  max-width: 430px !important;
-  min-height: 575px;
-  margin: 0 auto !important;
-  background-image: url("portada-wide.png");
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat;
-  transform: none !important;
-  filter: drop-shadow(0 18px 36px rgba(0,0,0,.58));
-  overflow: hidden;
-  border-radius: 18px;
+   
+@media (max-width: 700px) {
+  .hero-pergamino {
+    width: calc(100vw - 24px) !important;
+    max-width: none !important;
+    min-height: 68svh !important;
+    margin: 0 auto !important;
+    padding-bottom: 55px;
+    background-image: url("portada-wide.png");
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    transform: none !important;
+    filter: drop-shadow(0 18px 36px rgba(0,0,0,.58));
+    overflow: hidden;
+    border-radius: 18px;
+  }
 }
 
   .hero-contenido {
