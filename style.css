@@ -413,20 +413,20 @@ section, main, header {
    
 @media (max-width: 700px) {
   .hero-pergamino {
-    width: calc(100vw - 24px) !important;
+    width: calc(100vw - 20px) !important;
     max-width: none !important;
-    min-height: 68svh !important;
-    margin: 0 auto !important;
-    padding-bottom: 55px;
-    background-image: url("portada-wide.png");
+    min-height: 72svh !important;
+    background-image: url("portada-mobile.png") !important;
     background-size: cover !important;
     background-position: center center !important;
     background-repeat: no-repeat !important;
-    transform: none !important;
-    filter: drop-shadow(0 18px 36px rgba(0,0,0,.58));
-    overflow: hidden;
-    border-radius: 18px;
+    border-radius: 18px !important;
   }
+
+  .hero-contenido {
+    padding-bottom: 45px !important;
+  }
+}
 }
 
   .hero-contenido {
