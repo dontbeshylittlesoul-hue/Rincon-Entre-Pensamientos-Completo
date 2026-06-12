@@ -497,3 +497,36 @@ section, main, header {
     padding-right: .45rem;
   }
 }
+.paginas-libro {
+  width: min(100%, 980px);
+  margin: 0 auto;
+  padding: 48px 16px 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 34px;
+  align-items: center;
+}
+
+.pagina-libro {
+  width: min(100%, 760px);
+  margin: 0;
+  padding: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #efe0bd;
+  box-shadow:
+    0 24px 75px rgba(0, 0, 0, 0.50),
+    0 0 0 1px rgba(255, 230, 180, 0.12),
+    0 0 45px rgba(208, 146, 62, 0.08);
+}
+
+.pagina-libro img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter:
+    brightness(1.20)
+    contrast(0.84)
+    saturate(0.70)
+    sepia(0.06);
+}
