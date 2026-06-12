@@ -624,3 +624,86 @@ section, main, header {
     border-radius: 18px !important;
   }
 }
+/* =========================
+   FIX FINAL PORTADA HERO
+   PC + CELULAR
+========================= */
+
+/* PC / ESCRITORIO */
+.hero {
+  min-height: 100svh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 100px 24px 50px !important;
+  overflow: visible !important;
+}
+
+.hero-pergamino {
+  position: relative !important;
+  width: min(96vw, 1200px) !important;
+  max-width: 1200px !important;
+  min-height: 680px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+
+  display: grid !important;
+  place-items: end center !important;
+
+  background-image: url("portada-wide.png?v=5") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+
+  border-radius: 28px !important;
+  overflow: hidden !important;
+  transform: none !important;
+  filter: drop-shadow(0 28px 60px rgba(0,0,0,.68)) !important;
+}
+
+.hero-contenido {
+  position: relative !important;
+  z-index: 5 !important;
+  padding-bottom: 70px !important;
+}
+
+.hero-solo-boton {
+  align-self: end !important;
+}
+
+.hero-scroll-hint {
+  position: static !important;
+  margin-top: 26px !important;
+  text-align: center !important;
+}
+
+
+/* CELULAR */
+@media only screen and (max-width: 700px) {
+  .hero {
+    min-height: 100svh !important;
+    padding: 80px 10px 35px !important;
+  }
+
+  .hero-pergamino {
+    width: calc(100vw - 20px) !important;
+    max-width: none !important;
+    min-height: 72svh !important;
+
+    background-image: url("portada-mobile.png?v=5") !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+
+    border-radius: 18px !important;
+  }
+
+  .hero-contenido {
+    padding-bottom: 45px !important;
+  }
+
+  .hero-scroll-hint {
+    margin-top: 18px !important;
+  }
+}
