@@ -610,3 +610,17 @@ section, main, header {
     padding-bottom: 45px !important;
   }
 }
+/* FIX FINAL PORTADA MOBILE */
+@media only screen and (max-width: 700px) {
+  .hero-pergamino {
+    background-image: url("portada-mobile.png?v=3") !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+
+    width: calc(100vw - 20px) !important;
+    max-width: none !important;
+    min-height: 72svh !important;
+    border-radius: 18px !important;
+  }
+}
