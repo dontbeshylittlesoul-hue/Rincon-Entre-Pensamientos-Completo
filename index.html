@@ -119,5 +119,43 @@
   </main>
 
   <script src="main.js"></script>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const audioAmbiente = document.getElementById("audioAmbiente");
+  const playPauseBtn = document.getElementById("playPauseBtn");
+  const volumen = document.getElementById("volumen");
+
+  if (!audioAmbiente || !playPauseBtn) {
+    console.log("No se encontró el audio o el botón.");
+    return;
+  }
+
+  audioAmbiente.volume = volumen ? parseFloat(volumen.value) : 0.7;
+
+  playPauseBtn.addEventListener("click", function () {
+    if (audioAmbiente.paused) {
+      audioAmbiente.play()
+        .then(function () {
+          playPauseBtn.textContent = "⏸ Pausar ambiente";
+          playPauseBtn.setAttribute("aria-label", "Pausar ambiente");
+        })
+        .catch(function (error) {
+          console.log("Error al reproducir:", error);
+          alert("No se pudo reproducir el audio. Revisá que ambiente.mp3 esté bien subido y que la ruta sea correcta.");
+        });
+    } else {
+      audioAmbiente.pause();
+      playPauseBtn.textContent = "▶ Reproducir ambiente";
+      playPauseBtn.setAttribute("aria-label", "Reproducir ambiente");
+    }
+  });
+
+  if (volumen) {
+    volumen.addEventListener("input", function () {
+      audioAmbiente.volume = parseFloat(this.value);
+    });
+  }
+});
+</script>
 </body>
 </html>
