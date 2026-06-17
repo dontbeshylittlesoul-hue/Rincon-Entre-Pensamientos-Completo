@@ -707,6 +707,14 @@ section, main, header {
     margin-top: 18px !important;
   }
 }
+.audio-player-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+}
+
 .ambiente-btn {
   margin-top: 28px;
   padding: 16px 34px;
@@ -726,8 +734,17 @@ section, main, header {
   transform: translateY(-1px);
 }
 
-.audio-player-wrap {
+.volumen-box {
   display: flex;
-  justify-content: center;
   align-items: center;
+  gap: 12px;
+  color: rgba(230, 201, 137, 0.75);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.volumen-slider {
+  width: 160px;
+  accent-color: #d6b469;
+  cursor: pointer;
 }
