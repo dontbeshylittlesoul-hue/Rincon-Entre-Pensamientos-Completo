@@ -707,3 +707,27 @@ section, main, header {
     margin-top: 18px !important;
   }
 }
+.ambiente-btn {
+  margin-top: 28px;
+  padding: 16px 34px;
+  border: 1px solid rgba(214, 180, 105, 0.55);
+  border-radius: 999px;
+  background: rgba(214, 180, 105, 0.10);
+  color: #e6c989;
+  font-family: inherit;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.ambiente-btn:hover {
+  background: rgba(214, 180, 105, 0.20);
+  transform: translateY(-1px);
+}
+
+.audio-player-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
