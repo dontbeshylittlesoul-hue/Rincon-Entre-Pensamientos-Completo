@@ -52,8 +52,80 @@
       </div>
     </section>
 
+<section class="intro" id="lectura">
+  <div class="intro-inner">
+    <p class="section-mini">ebook completo</p>
+    <h2>Lectura inmersiva</h2>
+    <p>
+      Esta página acompaña al PDF completo. Podés leerla desde el navegador,
+      activar el audio ambiente y volver al PDF cuando quieras.
+    </p>
+    <a class="btn-secondary" href="rincon-entre-pensamientos-completo.pdf" download>Descargar PDF completo</a>
+  </div>
+</section>
 
-  
+    <section class="audio-seccion" id="ambiente">
+  <div class="audio-inner">
+    <p class="audio-mini">ambiente</p>
+    <p class="audio-texto">Poné lluvia, fuego o música suave y leé a tu ritmo.</p>
+
+    <div class="audio-player-wrap">
+      <audio id="audioAmbiente" loop preload="auto">
+        <source src="ambiente.mp3" type="audio/mpeg" />
+        Tu navegador no soporta audio HTML5.
+      </audio>
+
+      <button class="ambiente-btn" id="playPauseBtn" type="button" aria-label="Reproducir ambiente">
+        ▶ Reproducir ambiente
+      </button>
+
+      <div class="volumen-box">
+        <span class="volumen-label">Volumen</span>
+        <input 
+          type="range" 
+          id="volumen" 
+          class="volumen-slider" 
+          min="0" 
+          max="1" 
+          step="0.05" 
+          value="0.7" 
+          aria-label="Volumen del ambiente" 
+        />
+      </div>
+    </div>
+  </div>
+</section>
+    <section class="audio-seccion" id="ambiente">
+  <div class="audio-inner">
+    <p class="audio-mini">ambiente</p>
+    <p class="audio-texto">Poné lluvia, fuego o música suave y leé a tu ritmo.</p>
+
+    <div class="audio-player-wrap">
+      <audio id="audioAmbiente" loop preload="auto">
+        <source src="ambiente.mp3" type="audio/mpeg" />
+        Tu navegador no soporta audio HTML5.
+      </audio>
+
+      <button class="ambiente-btn" id="playPauseBtn" type="button" aria-label="Reproducir ambiente">
+        ▶ Reproducir ambiente
+      </button>
+
+      <div class="volumen-box">
+        <span class="volumen-label">Volumen</span>
+        <input 
+          type="range" 
+          id="volumen" 
+          class="volumen-slider" 
+          min="0" 
+          max="1" 
+          step="0.05" 
+          value="0.7" 
+          aria-label="Volumen del ambiente" 
+        />
+      </div>
+    </div>
+  </div>
+</section>
 <section class="paginas-libro" aria-label="Rincón entre Pensamientos libro completo" id="paginasLibro"></section>
 
 <script>
