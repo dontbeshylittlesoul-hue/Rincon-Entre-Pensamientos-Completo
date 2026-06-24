@@ -748,3 +748,72 @@ section, main, header {
   accent-color: #d6b469;
   cursor: pointer;
 }
+.libro-flip {
+  padding: 80px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.libro-flip-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.book-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px auto 30px;
+  width: 100%;
+  overflow: hidden;
+}
+
+#book {
+  margin: 0 auto;
+}
+
+.page {
+  background: #f3e2bc;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+}
+
+.page img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Controles */
+
+.book-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+#pageCounter {
+  font-family: "Crimson Pro", serif;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .libro-flip {
+    padding: 50px 10px;
+  }
+
+  .book-controls {
+    gap: 10px;
+  }
+
+  #pageCounter {
+    width: 100%;
+    order: -1;
+  }
+}
