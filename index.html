@@ -27,8 +27,8 @@
 <section class="hero" id="inicio">
   <div class="hero-pergamino">
     <div class="hero-contenido hero-solo-boton">
-      <a href="#lectura" class="btn-primary">
-        <span>Entrar a la lectura</span>
+     <a href="#libro" class="btn-primary">
+  <span>Entrar al libro</span>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path d="M8 2v12M2 8l6 6 6-6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -85,25 +85,86 @@
   </div>
 </section>
    
-<section class="paginas-libro" aria-label="Rincón entre Pensamientos libro completo" id="paginasLibro"></section>
-
-<section class="libro-interactivo" aria-label="Rincón entre Pensamientos libro completo">
-  <div class="libro-interactivo-inner">
+<section class="libro-flip" id="libro">
+  <div class="libro-flip-inner">
     <p class="section-mini">libro interactivo</p>
     <h2>Pasá las páginas a tu ritmo</h2>
     <p>
-      Abrí la lectura como un libro digital. Podés avanzar página por página y acompañarlo con el audio ambiente.
+      Leé como si abrieras un libro, página por página, acompañado por el audio ambiente.
     </p>
 
-    <iframe 
-      src=https://heyzine.com/flip-book/c305adf911.html
-      width="100%"
-      height="750"
-      style="border: none; border-radius: 18px;"
-      allowfullscreen>
-    </iframe>
+    <div class="book-wrap">
+      <div id="book"></div>
+    </div>
+
+    <div class="book-controls">
+      <button id="prevPage" class="btn-secondary" type="button">← Página anterior</button>
+      <span id="pageCounter">Página 1 de 76</span>
+      <button id="nextPage" class="btn-secondary" type="button">Página siguiente →</button>
+    </div>
   </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const book = document.getElementById("book");
+    const totalPaginas = 76;
+
+    for (let i = 1; i <= totalPaginas; i++) {
+      const numero = String(i).padStart(2, "0");
+
+      const page = document.createElement("div");
+      page.className = "page";
+
+      const img = document.createElement("img");
+      img.src = `paginas/pagina-${numero}.jpg`;
+      img.alt = `Página ${i} de Rincón entre Pensamientos`;
+
+      page.appendChild(img);
+      book.appendChild(page);
+    }
+
+    const pageFlip = new St.PageFlip(book, {
+      width: 550,
+      height: 780,
+      size: "stretch",
+      minWidth: 315,
+      maxWidth: 1000,
+      minHeight: 420,
+      maxHeight: 1400,
+      maxShadowOpacity: 0.45,
+      showCover: true,
+      mobileScrollSupport: false
+    });
+
+    pageFlip.loadFromHTML(document.querySelectorAll(".page"));
+
+    const pageCounter = document.getElementById("pageCounter");
+    const prevPage = document.getElementById("prevPage");
+    const nextPage = document.getElementById("nextPage");
+
+    function actualizarContador() {
+      const paginaActual = pageFlip.getCurrentPageIndex() + 1;
+      pageCounter.textContent = `Página ${paginaActual} de ${totalPaginas}`;
+    }
+
+    prevPage.addEventListener("click", function () {
+      pageFlip.flipPrev();
+    });
+
+    nextPage.addEventListener("click", function () {
+      pageFlip.flipNext();
+    });
+
+    pageFlip.on("flip", function () {
+      actualizarContador();
+    });
+
+    actualizarContador();
+  });
+</script>
 
     <section class="cierre" id="cierre">
       <div class="cierre-inner">
