@@ -96,9 +96,7 @@
     <div class="book-wrap">
       <div id="book"></div>
     </div>
-<audio id="sonidoPagina" preload="auto">
-  <source src="pasar-pagina.mp3" type="audio/mpeg" />
-</audio>
+<audio id="sonidoPagina" src="pasar-pagina.mp3" preload="auto"></audio>
     <div class="book-controls">
       <button id="prevPage" class="btn-secondary" type="button">← Página anterior</button>
       <span id="pageCounter">Página 1 de 76</span>
@@ -149,13 +147,17 @@
 const sonidoPagina = document.getElementById("sonidoPagina");
 
 function reproducirSonidoPagina() {
-  if (!sonidoPagina) return;
+  if (!sonidoPagina) {
+    console.log("No se encontró el audio de pasar página.");
+    return;
+  }
 
+  sonidoPagina.pause();
   sonidoPagina.currentTime = 0;
-  sonidoPagina.volume = 0.45;
+  sonidoPagina.volume = 0.8;
 
-  sonidoPagina.play().catch(function () {
-    // Algunos navegadores bloquean audio si todavía no hubo interacción.
+  sonidoPagina.play().catch(function (error) {
+    console.log("No se pudo reproducir el sonido de página:", error);
   });
 }
     function actualizarContador() {
@@ -164,20 +166,19 @@ function reproducirSonidoPagina() {
     }
 
 prevPage.addEventListener("click", function () {
-  reproducirSonidoPagina();
   pageFlip.flipPrev();
 });
 
 nextPage.addEventListener("click", function () {
-  reproducirSonidoPagina();
   pageFlip.flipNext();
 });
 
-    pageFlip.on("flip", function () {
-      actualizarContador();
-    });
+pageFlip.on("flip", function () {
+  actualizarContador();
+  reproducirSonidoPagina();
+});
 
-    actualizarContador();
+actualizarContador();
   });
 </script>
 
