@@ -96,7 +96,9 @@
     <div class="book-wrap">
       <div id="book"></div>
     </div>
-
+<audio id="sonidoPagina" preload="auto">
+  <source src="pasar-pagina.mp3" type="audio/mpeg" />
+</audio>
     <div class="book-controls">
       <button id="prevPage" class="btn-secondary" type="button">← Página anterior</button>
       <span id="pageCounter">Página 1 de 76</span>
@@ -144,19 +146,32 @@
     const pageCounter = document.getElementById("pageCounter");
     const prevPage = document.getElementById("prevPage");
     const nextPage = document.getElementById("nextPage");
+const sonidoPagina = document.getElementById("sonidoPagina");
 
+function reproducirSonidoPagina() {
+  if (!sonidoPagina) return;
+
+  sonidoPagina.currentTime = 0;
+  sonidoPagina.volume = 0.45;
+
+  sonidoPagina.play().catch(function () {
+    // Algunos navegadores bloquean audio si todavía no hubo interacción.
+  });
+}
     function actualizarContador() {
       const paginaActual = pageFlip.getCurrentPageIndex() + 1;
       pageCounter.textContent = `Página ${paginaActual} de ${totalPaginas}`;
     }
 
-    prevPage.addEventListener("click", function () {
-      pageFlip.flipPrev();
-    });
+prevPage.addEventListener("click", function () {
+  reproducirSonidoPagina();
+  pageFlip.flipPrev();
+});
 
-    nextPage.addEventListener("click", function () {
-      pageFlip.flipNext();
-    });
+nextPage.addEventListener("click", function () {
+  reproducirSonidoPagina();
+  pageFlip.flipNext();
+});
 
     pageFlip.on("flip", function () {
       actualizarContador();
