@@ -193,11 +193,68 @@
     const book = document.getElementById("book");
     const totalPaginas = 76;
 
+    /*
+      MAPA DEL ÍNDICE
+      Cada ID apunta a la página donde empieza esa sección.
+      Ejemplo:
+      #capitulo-7 abre la página 42.
+    */
+    const mapaLectura = {
+      "inicio-lectura": 1,
+      "umbral": 2,
+      "prologo": 5,
+
+      "parte-1": 8,
+      "capitulo-1": 9,
+      "interludio-1": 13,
+
+      "parte-2": 15,
+      "capitulo-2": 16,
+      "capitulo-3": 20,
+      "interludio-2": 24,
+
+      "parte-3": 26,
+      "capitulo-4": 27,
+      "interludio-3": 31,
+
+      "parte-4": 33,
+      "capitulo-5": 34,
+      "capitulo-6": 38,
+
+      "parte-5": 41,
+      "capitulo-7": 42,
+      "capitulo-8": 45,
+      "interludio-4": 48,
+
+      "parte-6": 51,
+      "capitulo-9": 52,
+      "interludio-5": 57,
+      "capitulo-10": 59,
+      "capitulo-11": 63,
+      "interludio-6": 68,
+
+      "antes-de-volver": 72,
+      "epilogo": 75,
+      "seguir-cerca": 76
+    };
+
+    /*
+      Creamos las 76 páginas del libro.
+      Además, si una página corresponde a una sección del índice,
+      le agregamos su ID como marcador.
+    */
     for (let i = 1; i <= totalPaginas; i++) {
       const numero = String(i).padStart(2, "0");
 
       const page = document.createElement("div");
       page.className = "page";
+      page.setAttribute("data-page-number", i);
+
+      Object.keys(mapaLectura).forEach(function (id) {
+        if (mapaLectura[id] === i) {
+          page.id = id;
+        }
+      });
 
       const img = document.createElement("img");
       img.src = `paginas/pagina-${numero}.jpg`;
@@ -225,41 +282,101 @@
     const pageCounter = document.getElementById("pageCounter");
     const prevPage = document.getElementById("prevPage");
     const nextPage = document.getElementById("nextPage");
-const sonidoPagina = document.getElementById("sonidoPagina");
+    const sonidoPagina = document.getElementById("sonidoPagina");
 
-function reproducirSonidoPagina() {
-  if (!sonidoPagina) {
-    console.log("No se encontró el audio de pasar página.");
-    return;
-  }
+    function reproducirSonidoPagina() {
+      if (!sonidoPagina) {
+        console.log("No se encontró el audio de pasar página.");
+        return;
+      }
 
-  sonidoPagina.pause();
-  sonidoPagina.currentTime = 0;
-  sonidoPagina.volume = 0.8;
+      sonidoPagina.pause();
+      sonidoPagina.currentTime = 0;
+      sonidoPagina.volume = 0.8;
 
-  sonidoPagina.play().catch(function (error) {
-    console.log("No se pudo reproducir el sonido de página:", error);
-  });
-}
+      sonidoPagina.play().catch(function (error) {
+        console.log("No se pudo reproducir el sonido de página:", error);
+      });
+    }
+
     function actualizarContador() {
       const paginaActual = pageFlip.getCurrentPageIndex() + 1;
       pageCounter.textContent = `Página ${paginaActual} de ${totalPaginas}`;
     }
 
-prevPage.addEventListener("click", function () {
-  pageFlip.flipPrev();
-});
+    function irAPaginaDelIndice(id, guardarHash = true) {
+      const pagina = mapaLectura[id];
 
-nextPage.addEventListener("click", function () {
-  pageFlip.flipNext();
-});
+      if (!pagina) {
+        return;
+      }
 
-pageFlip.on("flip", function () {
-  actualizarContador();
-  reproducirSonidoPagina();
-});
+      const indicePageFlip = pagina - 1;
 
-actualizarContador();
+      document.getElementById("libro").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      setTimeout(function () {
+        if (typeof pageFlip.turnToPage === "function") {
+          pageFlip.turnToPage(indicePageFlip);
+        } else if (typeof pageFlip.flip === "function") {
+          pageFlip.flip(indicePageFlip);
+        }
+
+        actualizarContador();
+
+        if (guardarHash) {
+          history.replaceState(null, "", "#" + id);
+        }
+      }, 450);
+    }
+
+    prevPage.addEventListener("click", function () {
+      pageFlip.flipPrev();
+    });
+
+    nextPage.addEventListener("click", function () {
+      pageFlip.flipNext();
+    });
+
+    pageFlip.on("flip", function () {
+      actualizarContador();
+      reproducirSonidoPagina();
+    });
+
+    /*
+      Conecta los links del índice con el libro.
+      Ejemplo: href="#capitulo-7" abre la página 42.
+    */
+    document.querySelectorAll(".indice-rincon a[href^='#']").forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        const id = link.getAttribute("href").replace("#", "");
+
+        if (mapaLectura[id]) {
+          event.preventDefault();
+          irAPaginaDelIndice(id, true);
+        }
+      });
+    });
+
+    /*
+      Si alguien entra desde Lovable con un link directo:
+      /#interludio-3
+      /#capitulo-7
+      /#epilogo
+      el libro abre directamente en esa sección.
+    */
+    const hashInicial = window.location.hash.replace("#", "");
+
+    if (mapaLectura[hashInicial]) {
+      setTimeout(function () {
+        irAPaginaDelIndice(hashInicial, false);
+      }, 700);
+    }
+
+    actualizarContador();
   });
 </script>
 
